@@ -21,12 +21,23 @@
                                 <div class="row">
                                     <div class="input-field col s12">
                                         <input id="name" type="text" name="name">
+                                        @if ($errors->has('name'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong style="color: red">{{ $errors->first('name') }}</strong>
+                                            </span>
+                                        @endif
                                         <label for="name">Nombre del rol</label>
+
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
                                         <textarea id="description" class="materialize-textarea" name="description"></textarea>
+                                        @if ($errors->has('description'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong style="color: red">{{ $errors->first('description') }}</strong>
+                                            </span>
+                                        @endif
                                         <label for="description">Descripción</label>
                                     </div>
                                     <div class="row">

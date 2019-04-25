@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Role\storeRequest;
 use App\Role;
 use Illuminate\Http\Request;
 
@@ -35,11 +36,12 @@ class RoleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(storeRequest $request)
     {
         //
+        $request->validated();
 
-        dd($request);
+
     }
 
     /**
