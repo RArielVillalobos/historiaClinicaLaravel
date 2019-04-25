@@ -11,12 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+//ruta autenticacion
 Auth::routes(['verify' => true]);
-Route::get('/demo',function (){
-    return view('theme.backoffice.pages.demo');
+
+//backoffice
+Route::group(['middleware'=>['auth'],'as'=>'backoffice.'],function (){
+        //Route::get('role','RoleController@index')->name('role.index');
+        //en vez de crear cada ruta para el crud lo podemos hacer asi, primer parametro nombre de la entidad
+        Route::resource('role','RoleController');
+
 });
-Route::get('/home', 'HomeController@index')->name('home');

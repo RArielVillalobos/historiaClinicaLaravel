@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-Hola desde demo
+
 @endsection
 
 @section('foot')
