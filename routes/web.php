@@ -16,6 +16,7 @@ Route::get('/', function () {
 });
 
 Auth::routes(['verify' => true]);
-
+Route::get('/demo',function (){
+    return view('theme.backoffice.pages.demo');
+});
 Route::get('/home', 'HomeController@index')->name('home');
-
