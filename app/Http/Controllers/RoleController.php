@@ -26,6 +26,7 @@ class RoleController extends Controller
     public function create()
     {
         //
+        return view('theme.backoffice.pages.role.create');
     }
 
     /**
@@ -37,6 +38,8 @@ class RoleController extends Controller
     public function store(Request $request)
     {
         //
+
+        dd($request);
     }
 
     /**
