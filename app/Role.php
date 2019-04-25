@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Role extends Model
 {
     //
-    protected $filiable=['name','slug','description'];
+    protected $fillable=['name','slug','description',];
 
     //RELACIONES
 
@@ -20,6 +20,14 @@ class Role extends Model
     }
 
 //ALMACENAMIENTO
+    public function store($request){
+        $slug=str_slug($request->name,'-');
+        //agregamos el slug a la peticion
+        $request->merge(['slug'=>$slug]);
+      return  self::create($request->input());
+
+
+    }
 
 //VALIDACION
 

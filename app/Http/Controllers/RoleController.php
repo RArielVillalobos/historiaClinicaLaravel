@@ -36,10 +36,11 @@ class RoleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(storeRequest $request)
+    public function store(storeRequest $request,Role $role)
     {
-        //
-        $request->validated();
+        //$request->validated();
+        $role=$role->store($request);
+        return 'se ha almacenado el role';
 
 
     }
