@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Role\storeRequest;
+use App\Http\Requests\Role\UpdateRequest;
 use App\Role;
 use Illuminate\Http\Request;
 
@@ -15,8 +16,9 @@ class RoleController extends Controller
      */
     public function index()
     {
-        //
-        return 'hola desde role controler';
+        //pendiente: añadir autorizacion con policy
+        $roles=Role::all();
+        return view('theme.backoffice.pages.role.index',['roles'=>$roles]);
     }
 
     /**
@@ -27,6 +29,7 @@ class RoleController extends Controller
     public function create()
     {
         //
+        //pendiente: añadir autorizacion con policy
         return view('theme.backoffice.pages.role.create');
     }
 
@@ -40,7 +43,8 @@ class RoleController extends Controller
     {
         //$request->validated();
         $role=$role->store($request);
-        return 'se ha almacenado el role';
+        return redirect()->route('backoffice.role.show',$role);
+
 
 
     }
@@ -54,6 +58,8 @@ class RoleController extends Controller
     public function show(Role $role)
     {
         //
+        //pendiente: añadir autorizacion con policy
+        return view('theme.backoffice.pages.role.show',['role'=>$role]);
     }
 
     /**
@@ -65,6 +71,7 @@ class RoleController extends Controller
     public function edit(Role $role)
     {
         //
+        return view('theme.backoffice.pages.role.edit',['role'=>$role]);
     }
 
     /**
@@ -74,9 +81,12 @@ class RoleController extends Controller
      * @param  \App\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Role $role)
+    public function update(UpdateRequest $request, Role $role)
     {
         //
+        $role->my_update($request);
+        return redirect()->route('backoffice.role.show',['role'=>$role]);
+
     }
 
     /**
@@ -88,5 +98,6 @@ class RoleController extends Controller
     public function destroy(Role $role)
     {
         //
+        //pendiente: añadir autorizacion con policy
     }
 }
