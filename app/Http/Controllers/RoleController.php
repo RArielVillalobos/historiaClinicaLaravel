@@ -97,7 +97,10 @@ class RoleController extends Controller
      */
     public function destroy(Role $role)
     {
-        //
         //pendiente: añadir autorizacion con policy
+        toast('rol eliminado!','success','top-right');
+        $role->delete();
+        return redirect()->route('backoffice.role.index');
+
     }
 }

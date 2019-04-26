@@ -18,6 +18,7 @@
                         <div class="row">
                             <p>{{$role->slug}}</p>
                             <p>{{$role->description}}</p>
+                            <p><a href="#" style="color:red" onclick="enviar_formulario()">Eliminar</a></p>
 
                         </div>
                     </div>
@@ -26,9 +27,41 @@
             </div>
         </div>
     </div>
+    <form method="post" action="{{route('backoffice.role.destroy',['role'=>$role])}}" name="delete_form">
+        @csrf
+        @method('delete')
+
+
+
+    </form>
 @endsection
 
 @section('foot')
+
+    <script>
+        function enviar_formulario()
+        {
+            Swal.fire({
+                title:'¿Desea eliminar este rol?',
+                text:'Esta accion no se puede deshacer',
+                type:'warning',
+                showCancelButton:true,
+                confirmButtonText:'Si,continuar',
+                cancelButtonText:'No,cancelar',
+               // closeOnCancel:false,
+                //closeOnConfirm:true,
+
+            }).then((result)=>{
+                if (result.value==true){
+                    //delete_form es el name del formulario
+                    //aca estamos diciendo que se envie el formulario
+                    document.delete_form.submit();
+                }
+
+            });
+
+        }
+    </script>
 
 @endsection
 
