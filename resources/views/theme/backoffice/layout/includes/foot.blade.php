@@ -7,5 +7,7 @@
 <script type="text/javascript" src="{{asset('assets/backoffice/js/plugins.js')}}"></script>
 <!--custom-script.js - Add your own theme custom JS-->
 <script type="text/javascript" src="{{asset('assets/backoffice/js/custom-script.js')}}"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+@include('sweetalert::alert')
 
 @yield('foot')

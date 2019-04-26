@@ -22,6 +22,7 @@ class Role extends Model
 //ALMACENAMIENTO
     public function store($request){
         $slug=str_slug($request->name,'-');
+        toast('rol guardado!','success','top-right');
         //agregamos el slug a la peticion
         $request->merge(['slug'=>$slug]);
         return  self::create($request->input());

@@ -51,5 +51,7 @@ Scripts
 ================================================ -->
 @include('theme.backoffice.layout.includes.foot')
 
+
+
 </body>
 </html>
