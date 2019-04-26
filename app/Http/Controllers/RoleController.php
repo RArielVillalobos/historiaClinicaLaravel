@@ -85,6 +85,7 @@ class RoleController extends Controller
     {
         //
         $role->my_update($request);
+        alert('Éxito','El rol se ha actualizado','success')->showConfirmButton();
         return redirect()->route('backoffice.role.show',['role'=>$role]);
 
     }

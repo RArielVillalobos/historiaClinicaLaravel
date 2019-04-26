@@ -3,7 +3,12 @@
 @section('title','editar rol '. $role->name)
 
 @section('head')
-
+@endsection
+@section('breadcrumbs')
+    {{-- <li><a></a></li> --}}
+    <li><a href="{{route('backoffice.role.index')}}">Roles del sistema</a></li>
+    <li><a href="{{route('backoffice.role.show',['role'=>$role])}}">{{$role->name}}</a></li>
+    <li>Edición</li>
 @endsection
 
 @section('content')

@@ -32,7 +32,9 @@ YIELD QUE OCUPAREMOS
         <!-- //////////////////////////////////////////////////////////////////////////// -->
         <!-- START CONTENT -->
         <section id="content">
+
             <div class="container">
+                @include('theme.backoffice.layout.includes.breadcrumbs')
                 @yield('content')
             </div>
             <!--end container-->

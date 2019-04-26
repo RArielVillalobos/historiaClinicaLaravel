@@ -5,6 +5,16 @@
 @section('head')
 
 @endsection
+@section('breadcrumbs')
+    {{-- <li><a></a></li> --}}
+    <li><a href="{{route('backoffice.role.index')}}">Roles del sistema</a></li>
+@endsection
+
+@section('dropdown_settings')
+    {{-- <li><a class="grey-text text-darken-2"></a></li> --}}
+    <li><a href="{{route('backoffice.role.create')}}" class="grey-text text-darken-2">Crear Rol</a></li>
+
+@endsection
 
 @section('content')
     <div class="section">
@@ -13,9 +23,8 @@
         <div id="basic-form" class="section">
             <div class="row">
                 <div class="col s12">
-                    <div class="card-panel">
-
-                        <div class="row">
+                    <div class="card">
+                        <div class="card-content">
                             <table class="bordered">
                                 <thead>
                                 <tr>
@@ -44,7 +53,7 @@
                                 </tbody>
                             </table>
 
-                        </div>
+
                     </div>
                 </div>
 

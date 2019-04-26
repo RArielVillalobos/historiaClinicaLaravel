@@ -39,12 +39,14 @@
                         <span class="nav-text">Panel de Administración</span>
                     </a>
                 </li>
+
                 <li class="bold">
-                    <a href="cards-basic.html" class="waves-effect waves-cyan">
-                        <i class="material-icons">cast</i>
-                        <span class="nav-text">Cards</span>
+                    <a href="{{route('backoffice.role.index')}}" class="waves-effect waves-cyan">
+                        <i class="material-icons">perm_identity</i>
+                        <span class="nav-text">Roles del sistema</span>
                     </a>
                 </li>
+
 
             </ul>
         </li>
