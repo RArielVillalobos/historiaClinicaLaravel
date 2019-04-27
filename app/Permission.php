@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Permission extends Model
 {
     //
-    protected $filiable=['name','slug','description'];
+    protected $fillable=['name','slug','description','role_id'];
 
     //RELACIONES
     public function role(){
@@ -20,6 +20,21 @@ class Permission extends Model
 
 
     //ALMACENAMIENTO
+
+    public function store($request){
+
+
+        $slug=str_slug($request->name,'-');
+        //dd($slug);
+        $request->merge(['slug'=>$slug]);
+        alert('Exito','Permiso creado correctamente','success')->showConfirmButton();
+
+        return self::create($request->input());
+
+
+
+
+    }
 
     //VALIDACION
 

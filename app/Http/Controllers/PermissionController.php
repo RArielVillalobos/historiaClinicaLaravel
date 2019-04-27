@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Permission\StoreRequest;
 use App\Permission;
 use App\Role;
 use Illuminate\Http\Request;
@@ -37,10 +38,11 @@ class PermissionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request,Permission $permission)
     {
-        //
-        dd($request->all());
+        $permission=$permission->store($request);
+
+        return redirect()->route('backoffice.permission.show',['permission'=>$permission]);
     }
 
     /**

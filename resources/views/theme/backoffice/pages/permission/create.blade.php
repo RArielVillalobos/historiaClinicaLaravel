@@ -46,6 +46,11 @@
                                             @endforeach
 
                                         </select>
+                                        @if ($errors->has('role_id'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong style="color: red">{{ $errors->first('role_id') }}</strong>
+                                            </span>
+                                        @endif
 
                                     </div>
 
