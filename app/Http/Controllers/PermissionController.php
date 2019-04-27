@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Permission;
+use App\Role;
 use Illuminate\Http\Request;
 
 class PermissionController extends Controller
@@ -25,6 +26,9 @@ class PermissionController extends Controller
     public function create()
     {
         //
+        $roles=Role::all();
+        return view('theme.backoffice.pages.permission.create',['roles'=>$roles]);
+
     }
 
     /**
@@ -36,6 +40,7 @@ class PermissionController extends Controller
     public function store(Request $request)
     {
         //
+        dd($request->all());
     }
 
     /**
