@@ -47,6 +47,13 @@
                     </a>
                 </li>
 
+                <li class="bold">
+                    <a href="{{route('backoffice.permission.index')}}" class="waves-effect waves-cyan">
+                        <i class="material-icons">vpn_key</i>
+                        <span class="nav-text">Permisos del sistema</span>
+                    </a>
+                </li>
+
 
             </ul>
         </li>

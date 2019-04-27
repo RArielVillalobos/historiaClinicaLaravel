@@ -34,6 +34,8 @@
                 </div>
 
             </div>
+
+
         </div>
     </div>
     <form method="post" action="{{route('backoffice.permission.destroy',['permission'=>$permission])}}" name="delete_form">
