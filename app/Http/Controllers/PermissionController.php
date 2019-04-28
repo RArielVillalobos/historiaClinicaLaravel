@@ -83,7 +83,8 @@ class PermissionController extends Controller
     public function update(Request $request, Permission $permission)
     {
         //
-        dd($request->all());
+        $permission->my_update($request);
+        return redirect()->route('backoffice.permission.show',$permission);
     }
 
     /**

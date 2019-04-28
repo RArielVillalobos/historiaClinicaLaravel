@@ -36,6 +36,15 @@ class Permission extends Model
 
     }
 
+    public function my_update($request){
+        $slug=str_slug($request->name,'-');
+        $request->merge(['slug'=>$slug]);
+        self::update($request->input());
+        alert('Exito','Permiso actualizado correctamente','success')->showConfirmButton();
+
+
+    }
+
     //VALIDACION
 
     //RECUPERACION DE INFORMACION
