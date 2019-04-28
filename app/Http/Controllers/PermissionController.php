@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Permission\StoreRequest;
+use App\Http\Requests\Permission\UpdateRequest;
 use App\Permission;
 use App\Role;
 use Illuminate\Http\Request;
@@ -80,7 +81,7 @@ class PermissionController extends Controller
      * @param  \App\Permission  $permission
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Permission $permission)
+    public function update(UpdateRequest $request, Permission $permission)
     {
         //
         $permission->my_update($request);
