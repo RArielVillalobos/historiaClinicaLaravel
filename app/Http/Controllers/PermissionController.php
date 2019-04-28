@@ -68,6 +68,9 @@ class PermissionController extends Controller
     public function edit(Permission $permission)
     {
         //
+        $roles=Role::all();
+
+        return view('theme.backoffice.pages.permission.edit',['permission'=>$permission,'roles'=>$roles]);
     }
 
     /**
@@ -80,6 +83,7 @@ class PermissionController extends Controller
     public function update(Request $request, Permission $permission)
     {
         //
+        dd($request->all());
     }
 
     /**
