@@ -97,5 +97,10 @@ class PermissionController extends Controller
     public function destroy(Permission $permission)
     {
         //
+        $role=$permission->role;
+        $permission->delete();
+        alert('Exito','Permiso eliminado','success');
+
+        return redirect()->route('backoffice.role.show',['role'=>$role]);
     }
 }
