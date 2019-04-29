@@ -14,7 +14,7 @@
 
 @section('content')
     <div class="section">
-        <p class="caption"><strong>Permiso: </strong>{{$user->name}}</p>
+        <p class="caption"><strong>Usuario: </strong>{{$user->name}}</p>
         <div class="divider"></div>
         <div id="basic-form" class="section">
             <div class="row">
@@ -32,17 +32,7 @@
                     </div>
                 </div>
                 <div class="col s12 m4">
-                    <div class="card">
-                        <div class="card-content">
-                            <span class="card-title"></span>
-
-                        </div>
-                        <div class="card-action">
-                            <p><a href="#" style="color:red" onclick="enviar_formulario()">Eliminar</a></p>
-                        </div>
-
-
-                    </div>
+                    @include('theme.backoffice.pages.user.includes.user_nav')
                 </div>
 
 

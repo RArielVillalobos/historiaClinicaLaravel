@@ -86,4 +86,14 @@ class UserController extends Controller
     {
         //
     }
+
+    //formulario para asignar role
+    public function assign_role(){
+
+    }
+
+    //asignar rol en la base de datos
+    public function role_assignament(){
+
+    }
 }
