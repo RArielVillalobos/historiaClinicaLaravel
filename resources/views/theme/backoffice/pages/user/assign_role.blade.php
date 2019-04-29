@@ -1,19 +1,20 @@
 @extends('theme.backoffice.layout.admin')
 
-@section('title','Crear rol')
+@section('title','Asignar roles')
 
 @section('head')
 
 @endsection
 @section('breadcrumbs')
     {{-- <li><a></a></li> --}}
-    <li><a href="{{route('backoffice.role.index')}}">Roles del sistema</a></li>
+    <li><a href="{{route('backoffice.role.index')}}">Usuarios del sistema</a></li>
+    <li><a href="{{route('backoffice.user.show',$user)}}">{{$user->name}}</a></li>
     <li>Crear Rol</li>
 @endsection
 
 @section('content')
     <div class="section">
-        <p class="caption">Introduce los datos para dar de alta un rol</p>
+        <p class="caption">Seleccione los roles que desea asignar</p>
         <div class="divider"></div>
         <div id="basic-form" class="section">
             <div class="row">
@@ -21,38 +22,25 @@
                     <div class="card">
 
                         <div class="card-content">
-                            <div class="card-title">Crear Rol</div>
-                            <form class="col s12" method="post" action="{{route('backoffice.role.store')}}" >
+                            <div class="card-title">Asignar roles</div>
+                            <form class="col s12" method="post" action="{{route('backoffice.user.role_assignament',$user)}}" >
                                 @csrf
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <input id="name" type="text" name="name">
-                                        @if ($errors->has('name'))
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong style="color: red">{{ $errors->first('name') }}</strong>
-                                            </span>
-                                        @endif
-                                        <label for="name">Nombre del rol</label>
-
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <textarea id="description" class="materialize-textarea" name="description"></textarea>
-                                        @if ($errors->has('description'))
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong style="color: red">{{ $errors->first('description') }}</strong>
-                                            </span>
-                                        @endif
-                                        <label for="description">Descripción</label>
-                                    </div>
-                                    <div class="row">
-                                        <div class="input-field col s12">
-                                            <button class="btn waves-effect light-blue lighten-2 right" type="submit">Guardar
-                                                <i class="material-icons right">send</i>
-                                            </button>
-                                        </div>
-                                    </div>
+                                <p>
+                                    <label>
+                                        <input type="checkbox" />
+                                        <span>Rol 1</span>
+                                    </label>
+                                </p>
+                                <p>
+                                    <label>
+                                        <input type="checkbox" />
+                                        <span>Rol 2</span>
+                                    </label>
+                                </p>
+                                <div class="input-field col s12">
+                                    <button class="btn waves-effect light-blue lighten-2 right" type="submit">Guardar
+                                        <i class="material-icons right">send</i>
+                                    </button>
                                 </div>
                             </form>
                         </div>

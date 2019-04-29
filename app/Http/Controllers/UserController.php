@@ -88,12 +88,14 @@ class UserController extends Controller
     }
 
     //formulario para asignar role
-    public function assign_role(){
+    public function assign_role(User $user){
 
+        return view('theme.backoffice.pages.user.assign_role',['user'=>$user]);
     }
 
     //asignar rol en la base de datos
-    public function role_assignament(){
+    public function role_assignament(User $user){
+        dd($user);
 
     }
 }
