@@ -18,7 +18,9 @@ Auth::routes(['verify' => true]);
 Route::group(['middleware'=>['auth'],'as'=>'backoffice.'],function (){
         //Route::get('role','RoleController@index')->name('role.index');
         //en vez de crear cada ruta para el crud lo podemos hacer asi, primer parametro nombre de la entidad
+        Route::resource('user','UserController');
         Route::resource('role','RoleController');
         Route::resource('permission','PermissionController');
+
 
 });
