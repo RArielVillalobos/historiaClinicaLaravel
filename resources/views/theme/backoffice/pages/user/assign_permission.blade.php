@@ -1,6 +1,6 @@
 @extends('theme.backoffice.layout.admin')
 
-@section('title','Asignar roles')
+@section('title','Asignar permisos')
 
 @section('head')
 
@@ -9,12 +9,12 @@
     {{-- <li><a></a></li> --}}
     <li><a href="{{route('backoffice.role.index')}}">Usuarios del sistema</a></li>
     <li><a href="{{route('backoffice.user.show',$user)}}">{{$user->name}}</a></li>
-    <li>Crear Rol</li>
+    <li>Asignar Permisos</li>
 @endsection
 
 @section('content')
     <div class="section">
-        <p class="caption">Seleccione los roles que desea asignar</p>
+        <p class="caption">Seleccione los permisos que desea asignar</p>
         <div class="divider"></div>
         <div id="basic-form" class="section">
             <div class="row">
@@ -22,16 +22,23 @@
                     <div class="card">
 
                         <div class="card-content">
-                            <div class="card-title">Asignar roles</div>
-                            <form class="col s12" method="post" action="{{route('backoffice.user.role_assignament',$user)}}" >
+                            <div class="card-title">Asignar permisos</div>
+                            <form class="col s12" method="post" action="{{route('backoffice.user.permission_assignament',$user)}}" >
                                 @csrf
+                                {{-- aqui se van a mostrar los permisos--}}
                                 @foreach($roles as $role)
-                                    <p>
-                                        <input type="checkbox" id="rol_{{$role->id}}" name="roles[]" value="{{$role->id}}" @if($user->has_role($role->id)) checked @endif/>
-                                        <label for="rol_{{$role->id}}">
-                                            <span>{{$role->name}}</span>
-                                        </label>
-                                    </p>
+                                    <p>{{$role->name}}</p>
+                                    @foreach($role->permissions as $permission)
+                                        <p>
+                                            <input type="checkbox" id="permission_{{$permission->id}}" name="permissions[]" value="{{$permission->id}}" @if($user->has_permission($permission->id)) checked @endif>
+                                            <label for="permission_{{$permission->id}}">
+                                                <span>{{$permission->name}}</span>
+                                            </label>
+                                        </p>
+
+
+                                    @endforeach
+
 
                                 @endforeach
 

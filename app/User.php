@@ -37,12 +37,39 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
+    //RELACIONES
 
     public function permissions(){
         return $this->belongsToMany(Permission::class)->withTimestamps();
     }
     public function roles(){
     return $this->belongsToMany(Role::class)->withTimestamps();
-}
+    }
+
+    //VALIDACIONES
+    //si este usuario ya tiene el rol que se envia por defecto enviamos true
+    public function has_role($id){
+        $encontrado=false;
+        foreach ($this->roles as $role){
+            if($role->id==$id || $role->slug==$id){
+                $encontrado=true;
+            }
+
+        }
+        return $encontrado;
+    }
+
+    public function has_permission($id){
+        $encontrado=false;
+        foreach ($this->permissions as $permission){
+            if($permission->id==$id || $permission->slug==$id){
+                $encontrado=true;
+            }
+
+        }
+        return $encontrado;
+    }
+
+
 
 }

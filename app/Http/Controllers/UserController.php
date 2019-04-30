@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Role;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -89,13 +90,34 @@ class UserController extends Controller
 
     //formulario para asignar role
     public function assign_role(User $user){
+        $roles=Role::all();
 
-        return view('theme.backoffice.pages.user.assign_role',['user'=>$user]);
+        return view('theme.backoffice.pages.user.assign_role',['user'=>$user,'roles'=>$roles]);
     }
 
     //asignar rol en la base de datos
-    public function role_assignament(User $user){
-        dd($user);
+    public function role_assignament(Request $request,User $user){
+        //asignacion de roles
+        $user->roles()->sync($request->roles);
+        alert('Exito','roles asignados','success');
+        return redirect()->route('backoffice.user.show',$user);
+        //dd($request->roles);
+
+    }
+
+    public function assign_permission(User $user){
+        $roles=$user->roles;
+
+        return view('theme.backoffice.pages.user.assign_permission',['user'=>$user,'roles'=>$roles]);
+
+    }
+
+    public function permission_assignament(Request $request,User $user){
+        $user->permissions()->sync($request->permissions);
+        alert('Exito','Permisos asignados','success');
+
+        return redirect()->route('backoffice.user.show',$user);
+
 
     }
 }
