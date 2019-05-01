@@ -10,6 +10,11 @@
     <li><a href="{{route('backoffice.user.index')}}">Usuarios del sistema</a></li>
     <li>{{$user->name}}</li>
 @endsection
+@section('dropdown_settings')
+    {{-- <li><a class="grey-text text-darken-2"></a></li> --}}
+    <li><a href="{{route('backoffice.user.edit',$user)}}" class="grey-text text-darken-2">Editar usuario</a></li>
+
+@endsection
 
 
 @section('content')
