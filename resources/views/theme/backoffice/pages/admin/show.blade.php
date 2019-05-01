@@ -1,6 +1,6 @@
 @extends('theme.backoffice.layout.admin')
 
-@section('title','panel de administracion')
+@section('title','administracion')
 
 @section('head')
 
@@ -8,6 +8,7 @@
 
 @section('breadcrumbs')
     {{-- <li><a></a></li> --}}
+
 @endsection
 
 @section('dropdown_settings')
@@ -16,10 +17,8 @@
 
 @section('content')
 
-
 @endsection
 
 @section('foot')
 
 @endsection
-

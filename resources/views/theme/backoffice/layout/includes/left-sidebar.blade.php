@@ -34,7 +34,7 @@
         <li class="no-padding">
             <ul class="collapsible" data-collapsible="accordion">
                 <li class="bold">
-                    <a href="index.html" class="waves-effect waves-cyan">
+                    <a href="{{route('backoffice.admin')}}" class="waves-effect waves-cyan">
                         <i class="material-icons">pie_chart_outlined</i>
                         <span class="nav-text">Panel de Administración</span>
                     </a>
