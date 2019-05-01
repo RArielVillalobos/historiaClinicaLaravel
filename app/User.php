@@ -47,6 +47,18 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     //VALIDACIONES
+    public function is_admin(){
+        $is_admin=false;
+        $admin=config('app.admin_role');
+        if($this->has_role($admin)){
+            $is_admin=true;
+        }else{
+            $is_admin=false;
+        }
+
+        return $is_admin;
+
+    }
     //si este usuario ya tiene el rol que se envia por defecto enviamos true
     public function has_role($id){
         $encontrado=false;
@@ -68,6 +80,19 @@ class User extends Authenticatable implements MustVerifyEmail
 
         }
         return $encontrado;
+    }
+
+    //OTRAS OPERACIONES
+    public function verify_permission_integrity(){
+        $permissions=$this->permissions;
+        foreach($permissions as $permission){
+            //si este usuario no tiene el rol del permiso
+            //quitar dicho permiso
+            if(!$this->has_role($permission->role->id)){
+                $this->permissions()->detach($permission->id);
+            }
+        }
+
     }
 
 

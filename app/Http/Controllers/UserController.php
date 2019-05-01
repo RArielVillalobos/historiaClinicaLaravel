@@ -99,6 +99,10 @@ class UserController extends Controller
     public function role_assignament(Request $request,User $user){
         //asignacion de roles
         $user->roles()->sync($request->roles);
+        //verifica la integridad de los permisos
+        $user->verify_permission_integrity();
+
+
         alert('Exito','roles asignados','success');
         return redirect()->route('backoffice.user.show',$user);
         //dd($request->roles);
@@ -113,6 +117,7 @@ class UserController extends Controller
     }
 
     public function permission_assignament(Request $request,User $user){
+
         $user->permissions()->sync($request->permissions);
         alert('Exito','Permisos asignados','success');
 

@@ -11,8 +11,17 @@
 |
 */
 
+Route::get('test',function (){
+    $user=auth()->user();
+    if($user->is_admin()){
+        dd('administrador');
+    }else{
+        dd('no es administrador');
+    }
+});
 //ruta autenticacion
 Auth::routes(['verify' => true]);
+
 
 //backoffice
 Route::group(['middleware'=>['auth'],'as'=>'backoffice.'],function (){
