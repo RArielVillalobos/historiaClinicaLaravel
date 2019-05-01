@@ -55,6 +55,10 @@ class User extends Authenticatable implements MustVerifyEmail
 
     }
 
+    public function my_update($request){
+        
+    }
+
 
 
     //RELACIONES

@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\User\StoreRequest;
+use App\Http\Requests\User\UpdateRequest;
 use App\Role;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Session\Store;
 
 class UserController extends Controller
 {
@@ -81,10 +83,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         //
-        dd($request->all());
+        $user->my_update($request);
+
     }
 
     /**
