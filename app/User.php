@@ -37,6 +37,16 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
+    //Almacenimiento
+    public function store($request){
+        
+
+    }
+
+
+
+
+
     //RELACIONES
 
     public function permissions(){
