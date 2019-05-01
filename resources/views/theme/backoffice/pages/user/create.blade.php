@@ -26,6 +26,24 @@
                                 @csrf
                                 <div class="row">
                                     <div class="input-field col s12">
+                                        <select id="role" name="role_id" required>
+                                            <option disabled selected>Selecciona rol</option>
+                                            @foreach($roles as $role)
+                                                <option value="{{$role->id}}">{{$role->name}}</option>
+                                            @endforeach
+
+                                        </select>
+                                        @if ($errors->has('role_id'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong style="color: red">{{ $errors->first('role_id') }}</strong>
+                                            </span>
+                                        @endif
+
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s12">
                                         <input id="name" type="text" name="name">
                                         @if ($errors->has('name'))
                                             <span class="invalid-feedback" role="alert">
@@ -33,6 +51,54 @@
                                             </span>
                                         @endif
                                         <label for="name">Nombre del usuario</label>
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <input id="dob" type="date" name="dob">
+                                        @if ($errors->has('dob'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong style="color: red">{{ $errors->first('dob') }}</strong>
+                                            </span>
+                                        @endif
+
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <input id="email" type="email" name="email">
+                                        @if ($errors->has('email'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong style="color: red">{{ $errors->first('email') }}</strong>
+                                            </span>
+                                        @endif
+                                        <label for="email">Correo electrónico</label>
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <input id="password" type="password" name="password">
+                                        @if ($errors->has('password'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong style="color: red">{{ $errors->first('password') }}</strong>
+                                            </span>
+                                        @endif
+                                        <label for="name">Contraseña</label>
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <input id="password_confirmation" type="password" name="password_confirmation">
+                                        @if ($errors->has('password_confirmation'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong style="color: red">{{ $errors->first('password_confirmation') }}</strong>
+                                            </span>
+                                        @endif
+                                        <label for="password_confirmation">Confirmar contraseña</label>
 
                                     </div>
                                 </div>

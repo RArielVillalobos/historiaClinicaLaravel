@@ -28,7 +28,8 @@ class UserController extends Controller
     public function create()
     {
         //
-        return view('theme.backoffice.pages.user.create');
+        $roles=Role::all();
+        return view('theme.backoffice.pages.user.create',['roles'=>$roles]);
     }
 
     /**
@@ -40,6 +41,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
+        dd($request->all());
     }
 
     /**
