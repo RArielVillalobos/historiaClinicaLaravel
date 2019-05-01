@@ -16,7 +16,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'dob', 'email', 'password',
     ];
 
     /**
@@ -39,11 +39,21 @@ class User extends Authenticatable implements MustVerifyEmail
 
     //Almacenimiento
     public function store($request){
-        
+        //asignacion masiva
+        $user=self::create($request->input());
+        //obtenemos los roles que nos mando el request, en este caso es uno
+        $roles=[$request->role_id];
+        //obtenemos los permisos de ese rol
+        $permissions=Role::find($roles[0])->permissions;
+        //sincronizamos los roles a usuario creado
+        $user->roles()->sync($roles);
+        //sincronizamos los permisos de dicho rol al usuario
+        $user->permissions()->sync($permissions);
+
+        alert('Exito','Usuario creado con exito','success');
+        return $user;
 
     }
-
-
 
 
 
@@ -55,6 +65,7 @@ class User extends Authenticatable implements MustVerifyEmail
     public function roles(){
     return $this->belongsToMany(Role::class)->withTimestamps();
     }
+
 
     //VALIDACIONES
     public function is_admin(){
@@ -93,13 +104,32 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     //OTRAS OPERACIONES
-    public function verify_permission_integrity(){
+    public function verify_permission_integrity(array $roles){
+        //los permisos que tiene el usuario
         $permissions=$this->permissions;
         foreach($permissions as $permission){
             //si este usuario no tiene el rol del permiso
             //quitar dicho permiso
-            if(!$this->has_role($permission->role->id)){
+            //si el permiso que estamos recorriendo no se encuentra dentro de los roles que estamos sincronizando con el usuario entonces elimina el permiso
+
+            if(!in_array($permission->role->id,$roles)){
                 $this->permissions()->detach($permission->id);
+            }
+        }
+
+    }
+
+    //recibe un arreglo de roles nuevos que se le esten asignando al usuario
+    public function permission_mass_assignament(array $roles){
+        foreach($roles as $role){
+            if(!$this->has_role($role)){
+                $role_obj=Role::findOrFail($role);
+                $permissions=$role_obj->permissions;
+                //como queremos conservar los permisos que ya tiene el usuario NO USAMOS
+                //que solamente se sincronizen los nuevos permisos
+                //pasamos como parametro la coleccion de modelos
+                $this->permissions()->syncWithoutDetaching($permissions);
+
             }
         }
 

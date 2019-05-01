@@ -42,7 +42,9 @@ class UserController extends Controller
     public function store(StoreRequest $request,User $user)
     {
         //
-        $user->store($request);
+        $user=$user->store($request);
+
+        return redirect()->route('backoffice.user.show',$user);
 
 
     }
@@ -103,11 +105,13 @@ class UserController extends Controller
 
     //asignar rol en la base de datos
     public function role_assignament(Request $request,User $user){
-        //asignacion de roles
+        //asignando permisos de los roles(del formulario)
+        $user->permission_mass_assignament($request->roles);
+        //asignacion de roles que vienen desde el formulario
         $user->roles()->sync($request->roles);
         //verifica la integridad de los permisos
         //si el usuario tiene un permiso asignado, pero le quitamos el rol al cual pertenece el permiso, debemos quitar el permiso
-        $user->verify_permission_integrity();
+        $user->verify_permission_integrity($request->roles);
 
 
         alert('Exito','roles asignados','success');
