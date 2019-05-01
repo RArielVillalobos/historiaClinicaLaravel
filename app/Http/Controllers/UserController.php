@@ -83,10 +83,12 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateRequest $request, $id)
+    public function update(UpdateRequest $request, User $user)
     {
         //
         $user->my_update($request);
+
+        return redirect()->route('backoffice.user.show',$user);
 
     }
 

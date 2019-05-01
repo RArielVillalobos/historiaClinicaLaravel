@@ -40,6 +40,9 @@ class User extends Authenticatable implements MustVerifyEmail
     //Almacenimiento
     public function store($request){
         //asignacion masiva
+        $passwordHasheado=bcrypt($request->password);
+        $request->merge(['password'=>$passwordHasheado]);
+
         $user=self::create($request->input());
         //obtenemos los roles que nos mando el request, en este caso es uno
         $roles=[$request->role_id];
@@ -56,7 +59,10 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     public function my_update($request){
-        
+
+        self::update($request->input());
+        alert('Exito','Usuario actualizado','success');
+
     }
 
 

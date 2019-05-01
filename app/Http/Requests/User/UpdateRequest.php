@@ -14,6 +14,7 @@ class UpdateRequest extends FormRequest
     public function authorize()
     {
         //de la ruta extrae al modelo user
+        //dd($this->route('user')->id);
 
         return true;
     }
@@ -30,7 +31,7 @@ class UpdateRequest extends FormRequest
             'name'=>'required|max:255|string',
             'dob'=>'required',
             //omita la validacion unique si es el mismo usuario
-            'email'=>'required|string|email|max:255|unique:users,email,'.$this->route('user'),
+            'email'=>'required|string|email|max:255|unique:users,email,'.$this->route('user')->id,
 
 
         ];

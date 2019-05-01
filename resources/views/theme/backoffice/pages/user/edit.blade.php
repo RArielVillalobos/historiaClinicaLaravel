@@ -22,7 +22,7 @@
 
                         <div class="card-content">
                             <div class="card-title">Crear Usuario</div>
-                            <form class="col s12" method="post" action="{{route('backoffice.user.update',$user)}}">
+                            <form class="col s12" method="post" action="{{route('backoffice.user.update',['user'=>$user])}}">
                                 @csrf
                                 @method('PUT')
 
