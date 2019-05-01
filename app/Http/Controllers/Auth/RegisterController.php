@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Role;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -63,10 +64,21 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user= User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+        $patient=config('app.patient_role');
+        $role=Role::where('slug',$patient)->first();
+        $permissions=$role->permissions;
+        //adjuntando rol al usuario
+        $user->roles()->attach($role);
+        //para poder sincronizarle un arreglo
+        $user->permissions()->sync($permissions);
+
+        return $user;
+
+
     }
 }

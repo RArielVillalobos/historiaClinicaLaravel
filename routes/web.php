@@ -11,18 +11,16 @@
 |
 */
 
-Route::get('test',function (){
-    $user=auth()->user();
-    if($user->is_admin()){
-        dd('administrador');
-    }else{
-        dd('no es administrador');
-    }
+
+Route::get('/',function (){
+    return view('welcome');
 });
+
+Route::get('/home',function (){
+    return view('home');
+})->middleware('auth');
 //ruta autenticacion
 Auth::routes(['verify' => true]);
-
-
 //backoffice
 Route::group(['middleware'=>['auth'],'as'=>'backoffice.'],function (){
         //Route::get('role','RoleController@index')->name('role.index');

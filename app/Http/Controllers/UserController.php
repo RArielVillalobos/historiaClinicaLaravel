@@ -100,6 +100,7 @@ class UserController extends Controller
         //asignacion de roles
         $user->roles()->sync($request->roles);
         //verifica la integridad de los permisos
+        //si el usuario tiene un permiso asignado, pero le quitamos el rol al cual pertenece el permiso, debemos quitar el permiso
         $user->verify_permission_integrity();
 
 
