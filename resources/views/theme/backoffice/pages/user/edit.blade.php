@@ -1,6 +1,6 @@
 @extends('theme.backoffice.layout.admin')
 
-@section('title','Editar'.$user->name)
+@section('title','Editar '.$user->name)
 
 @section('head')
 
@@ -39,7 +39,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    
+
                                     <div class="input-field col s12">
                                         <input id="dob" type="date" name="dob" value="{{$user->dob->format('d/m/Y')}}">
                                         @if ($errors->has('dob'))

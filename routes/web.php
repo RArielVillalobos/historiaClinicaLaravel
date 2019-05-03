@@ -24,6 +24,8 @@ Auth::routes(['verify' => true]);
 //backoffice
 Route::group(['middleware'=>['auth'],'as'=>'backoffice.'],function (){
         Route::get('admin','AdminController@show')->name('admin');
+        Route::get('user/import','UserController@import')->name('user.import');
+        Route::post('user/make_import','UserController@make_import')->name('user.make_import');
 
         //Route::get('role','RoleController@index')->name('role.index');
         //en vez de crear cada ruta para el crud lo podemos hacer asi, primer parametro nombre de la entidad
