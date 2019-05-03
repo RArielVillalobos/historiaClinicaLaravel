@@ -11,7 +11,9 @@
 |
 */
 
-
+Route::get('test',function (){
+     return 'permiso concedido';
+})->middleware('role');
 Route::get('/',function (){
     return view('welcome');
 });
