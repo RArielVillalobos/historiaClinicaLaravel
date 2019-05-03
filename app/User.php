@@ -37,6 +37,10 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
+    //las fechas que trabajaremos en nuestro modelo
+    //updated_at y created_at no son necesarias
+    protected $dates=['dob'];
+
     //Almacenimiento
     public function store($request){
         //asignacion masiva
@@ -111,6 +115,22 @@ class User extends Authenticatable implements MustVerifyEmail
 
         }
         return $encontrado;
+    }
+    //RECUPERACION DE INFORMACION
+    public function age(){
+        if($this->dob!=null){
+            $age=$this->dob->age;
+            $years=($age==1)?' año' : 'años';
+
+            $msj=$age.' '.$years;
+
+        }else{
+            $msj='indefinido';
+        }
+
+        return $msj;
+
+
     }
 
     //OTRAS OPERACIONES

@@ -27,6 +27,7 @@
                     <div class="card">
                         <div class="card-content">
                             <span class="card-title">{{$user->name}}</span>
+                            <p><strong>Edad: {{$user->age()}}</strong></p>
 
 
                         </div>
