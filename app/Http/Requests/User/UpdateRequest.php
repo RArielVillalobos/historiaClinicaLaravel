@@ -16,7 +16,9 @@ class UpdateRequest extends FormRequest
         //de la ruta extrae al modelo user
         //dd($this->route('user')->id);
 
-        return true;
+        $user=$this->route('user');
+
+        return $this->user()->can('update',$user);
     }
 
     /**

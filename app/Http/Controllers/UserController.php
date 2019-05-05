@@ -65,6 +65,7 @@ class UserController extends Controller
     public function show(User $user)
     {
         //
+        $this->authorize('view',$user);
 
         return view('theme.backoffice.pages.user.show',['user'=>$user]);
     }
@@ -78,6 +79,7 @@ class UserController extends Controller
     public function edit(User $user)
     {
         //
+        $this->authorize('update',$user);
         return view('theme.backoffice.pages.user.edit',['user'=>$user]);
     }
 
@@ -113,6 +115,7 @@ class UserController extends Controller
 
     //formulario para asignar role
     public function assign_role(User $user){
+        $this->authorize('assign_role',$user);
         $roles=Role::all();
 
         return view('theme.backoffice.pages.user.assign_role',['user'=>$user,'roles'=>$roles]);
@@ -120,6 +123,7 @@ class UserController extends Controller
 
     //asignar rol en la base de datos
     public function role_assignament(Request $request,User $user){
+        $this->authorize('assign_role',$user);
         //asignando permisos de los roles(del formulario)
         $user->permission_mass_assignament($request->roles);
         //asignacion de roles que vienen desde el formulario
@@ -136,6 +140,7 @@ class UserController extends Controller
     }
 
     public function assign_permission(User $user){
+        $this->authorize('assign_permission',$user);
         $roles=$user->roles;
 
         return view('theme.backoffice.pages.user.assign_permission',['user'=>$user,'roles'=>$roles]);
@@ -152,14 +157,17 @@ class UserController extends Controller
 
     }
 
+    //formulario importar archivo excel de usuarios
     public function import(){
+        $this->authorize('import',User::class);
         return view('theme.backoffice.pages.user.imports');
     }
 
 
 
-    //Importar usuarios desde una hoja de excel
+    //procesar importacion de  usuarios desde una hoja de excel
     public function make_import(Request $request){
+        $this->authorize('import',User::class);
         Excel::import(new UsersImport,$request->file('excel'));
         alert('Exito','Usuarios importados','success');
         return redirect()->route('backoffice.user.index');

@@ -40,5 +40,8 @@ Route::group(['middleware'=>['auth'],'as'=>'backoffice.'],function (){
         Route::resource('role','RoleController');
         Route::resource('permission','PermissionController');
 
+});
 
+Route::group(['as'=>'frontoffice.'],function (){
+    Route::get('profile','UserController@profile')->name('user.profile');
 });
