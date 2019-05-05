@@ -115,6 +115,7 @@ class User extends Authenticatable implements MustVerifyEmail
         return false;
     }
 
+    //$el id es el slug del permiso
     public function has_permission($id){
         $encontrado=false;
         foreach ($this->permissions as $permission){

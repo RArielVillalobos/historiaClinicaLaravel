@@ -41,7 +41,7 @@
                                 <div class="row">
 
                                     <div class="input-field col s12">
-                                        <input id="dob" type="date" name="dob" value="{{$user->dob->format('d/m/Y')}}">
+                                        <input id="dob" type="date" name="dob" value="{{$user->dob}}">
                                         @if ($errors->has('dob'))
                                             <span class="invalid-feedback" role="alert">
                                                 <strong style="color: red">{{ $errors->first('dob') }}</strong>

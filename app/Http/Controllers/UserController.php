@@ -22,6 +22,7 @@ class UserController extends Controller
     public function index()
     {
         //
+        $this->authorize('index',User::class);
         $users=User::all();
         return view('theme.backoffice.pages.user.index',['users'=>$users]);
     }
@@ -34,6 +35,7 @@ class UserController extends Controller
     public function create()
     {
         //
+        $this->authorize('create',User::class);
         $roles=Role::all();
         return view('theme.backoffice.pages.user.create',['roles'=>$roles]);
     }

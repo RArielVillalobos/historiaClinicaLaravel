@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class RoleController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('role:'.config('app.admin_role'));
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -16,6 +21,9 @@ class RoleController extends Controller
      */
     public function index()
     {
+        //policie
+        //usamos la policia index que esta definida en RolePolicy
+        $this->authorize('index',Role::class);
         //pendiente: añadir autorizacion con policy
         $roles=Role::all();
         return view('theme.backoffice.pages.role.index',['roles'=>$roles]);
@@ -29,6 +37,7 @@ class RoleController extends Controller
     public function create()
     {
         //
+        $this->authorize('create',Role::class);
         //pendiente: añadir autorizacion con policy
         return view('theme.backoffice.pages.role.create');
     }
@@ -58,6 +67,7 @@ class RoleController extends Controller
     public function show(Role $role)
     {
         //
+        $this->authorize('view',$role);
         //pendiente: añadir autorizacion con policy
         return view('theme.backoffice.pages.role.show',['role'=>$role]);
     }

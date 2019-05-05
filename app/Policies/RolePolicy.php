@@ -10,6 +10,9 @@ class RolePolicy
 {
     use HandlesAuthorization;
 
+    public function index(User $user){
+        return $user->has_permission('index-role');
+    }
     /**
      * Determine whether the user can view the role.
      *
@@ -20,6 +23,7 @@ class RolePolicy
     public function view(User $user, Role $role)
     {
         //
+        return $user->has_permission('view-role');
     }
 
     /**
@@ -31,7 +35,8 @@ class RolePolicy
     public function create(User $user)
     {
         //
-        return true;
+        return $user->has_permission('create-role');
+
     }
 
     /**

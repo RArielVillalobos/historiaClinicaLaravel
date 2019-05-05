@@ -9,6 +9,9 @@ class UserPolicy
 {
     use HandlesAuthorization;
 
+    public function index(User $user){
+        return $user->has_permission('index-user');
+    }
     /**
      * Determine whether the user can view the model.
      *
@@ -19,6 +22,7 @@ class UserPolicy
     public function view(User $user, User $model)
     {
         //
+
     }
 
     /**
@@ -31,6 +35,7 @@ class UserPolicy
     {
         //
 
+        return $user->has_permission('create-user');
     }
 
     /**
