@@ -2,6 +2,7 @@
 <html>
 <head>
     @include('theme.frontoffice.layout.includes.head')
+    @yield('head')
 </head>
 @include('theme.frontoffice.layout.includes.navbar')
 
@@ -12,6 +13,7 @@
     </main>
     @include('theme.frontoffice.layout.includes.footer')
     @include('theme.frontoffice.layout.includes.foot')
+    @yield('foot')
 </body>
 
 </html>
