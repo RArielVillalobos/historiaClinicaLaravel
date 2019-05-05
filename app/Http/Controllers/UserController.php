@@ -19,6 +19,11 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         //
@@ -172,7 +177,9 @@ class UserController extends Controller
         alert('Exito','Usuarios importados','success');
         return redirect()->route('backoffice.user.index');
 
+    }
 
-
+    public function profile(){
+        return view('theme.frontoffice.pages.user.profile');
     }
 }

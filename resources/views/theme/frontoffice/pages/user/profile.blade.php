@@ -1,0 +1,1 @@
+@extends('theme.frontoffice.layout.main')
