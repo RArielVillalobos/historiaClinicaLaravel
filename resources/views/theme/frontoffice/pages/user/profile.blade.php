@@ -12,11 +12,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            {{-- menu lateral --}}
-            <div class="col s12 m4">
-                <h1>Menu lateral</h1>
-
-            </div>
+            @include('theme.frontoffice.pages.user.includes.nav')
             {{-- seccion principal--}}
             <div class="col s12 m8">
                 <h1>Seccion lateral</h1>
