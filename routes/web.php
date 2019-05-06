@@ -44,4 +44,5 @@ Route::group(['middleware'=>['auth'],'as'=>'backoffice.'],function (){
 
 Route::group(['as'=>'frontoffice.'],function (){
     Route::get('profile','UserController@profile')->name('user.profile');
+    Route::get('patient/cita','PatientController@cita')->name('patient.cita');
 });

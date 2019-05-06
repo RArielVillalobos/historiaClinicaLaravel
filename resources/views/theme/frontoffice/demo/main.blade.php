@@ -1,6 +1,8 @@
 @extends('theme.frontoffice.layout.main)
 
+@section('title')
 
+@endsection
 @section('head')
 
 @endsection
