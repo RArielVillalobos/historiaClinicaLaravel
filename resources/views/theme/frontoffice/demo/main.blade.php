@@ -1,4 +1,4 @@
-@extends('theme.frontoffice.layout.main)
+@extends('theme.frontoffice.layout.main')
 
 @section('title')
 
