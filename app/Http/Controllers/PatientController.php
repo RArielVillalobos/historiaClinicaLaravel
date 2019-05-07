@@ -8,7 +8,7 @@ class PatientController extends Controller
 {
     //
 
-    public function cita(){
-        return view('theme.frontoffice.pages.user.patient.cita');
+    public function schedule(){
+        return view('theme.frontoffice.pages.user.patient.schedule');
     }
 }
