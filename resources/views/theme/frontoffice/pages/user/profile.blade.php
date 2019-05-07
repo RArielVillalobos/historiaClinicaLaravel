@@ -1,6 +1,6 @@
 @extends('theme.frontoffice.layout.main')
 @section('title')
-Perfil de usuario
+Perfil de {{$user->name}}
 @endsection
 
 @section('head')
@@ -20,7 +20,10 @@ Perfil de usuario
                 <div class="card">
                     <div class="card-content">
                         <span class="card-title">@yield('title')</span>
-                        It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters
+                        <p><strong>Nombre: {{$user->name}}</strong></p>
+                        <p><strong>Edad: {{$user->age()}}</strong></p>
+                        <p><strong>Email: {{$user->email}}</strong></p>
+                        <p><strong>Miembro desde: {{$user->created_at->diffForHumans()}}</strong></p>
 
                     </div>
 
