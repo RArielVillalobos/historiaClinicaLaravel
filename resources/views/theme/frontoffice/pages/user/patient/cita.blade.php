@@ -82,14 +82,32 @@
 <script src="{{asset('assets/frontoffice/js/plugins/pickadate/legacy.js')}}"></script>
 <script>
 
-    $
-    $('.datepicker').pickadate({
+
+    var input_date=$('.datepicker').pickadate({
+        //a partir de la fecha actual
+        min:true,
 
     });
-    $('.timepicker').pickatime({
+    var date_picker=input_date.pickadate('picker');
+    //deshabilitar los domingos
+    //1 es domingo
+    date_picker.set('disable',[
+        1
+    ]);
 
-    });
-    ('select').formSelect();
+
+   var input_time= $('.timepicker').pickatime({
+       //se puede elegir un horario desde dos horas despues de la hora actual
+       min:4,
+   });
+   var time_picker=input_time.pickatime('picker');
+   //deshabilitar 4 de la mañana
+   time_picker.set('disable',[
+        4
+   ]);
+
+
+    $('select').formSelect();
 
 </script>
 
