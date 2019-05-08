@@ -83,9 +83,11 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
         $this->authorize('update',$user);
-        return view('theme.backoffice.pages.user.edit',['user'=>$user]);
+        $view=(isset($_GET['view'])) ? $_GET['view'] : null;
+
+
+        return view($user->edit_view($view),['user'=>$user]);
     }
 
     /**

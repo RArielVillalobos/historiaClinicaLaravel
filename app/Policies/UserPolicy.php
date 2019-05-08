@@ -49,7 +49,11 @@ class UserPolicy
     public function update(User $user, User $model)
     {
         //
-        return $user->has_permission('update-user');
+
+
+        //si el usuario autenticado tiene el permiso update-user o
+        //si el usuario autenticado es igual al modelo que estamos actualizando (al parametro)
+        return $user->has_permission('update-user') || $user->id==$model->id;
     }
 
     /**

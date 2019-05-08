@@ -175,6 +175,26 @@ class User extends Authenticatable implements MustVerifyEmail
 
     }
 
+    //vistas
+    public function edit_view($view=null){
+        $auth=auth()->user();
+
+        //si la variable view no es nula
+        if(!is_null($view) && $view=='frontoffice'){
+            return 'theme.frontoffice.pages.user.edit';
+
+        }else if($auth->has_role(config('app.admin_role'))){
+            //si el usuario autenticado es admin ir a la vista editar usuario del panel
+            return 'theme.backoffice.pages.user.edit';
+
+
+        }else{
+            return 'theme.frontoffice.pages.user.edit';
+        }
+
+
+    }
+
 
 
 }
