@@ -1,6 +1,6 @@
 @extends('theme.frontoffice.layout.main')
 
-@section('title','Mis recetas')
+@section('title','Mis facturas')
 
 
 @section('head')
@@ -23,14 +23,18 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Especialista</th>
-                                    <th>Accion</th>
+                                    <th>Concepto</th>
+                                    <th>Monto</th>
+                                    <th>Estado</th>
+                                    <th>Acción</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>1</td>
-                                    <td>Dr.Jorge</td>
+                                    <td>Consulta Dr Jorge</td>
+                                    <td>$400</td>
+                                    <td>Pagado</td>
                                     <td>
                                         <a href="#modal" data-prescription="1" class="waves-effect waves-light btn modal-trigger">Ver</a>
                                     </td>

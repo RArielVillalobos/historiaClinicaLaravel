@@ -47,5 +47,6 @@ Route::group(['as'=>'frontoffice.'],function (){
     Route::get('patient/schedule','PatientController@schedule')->name('patient.schedule');
     Route::get('patient/appointments','PatientController@appointments')->name('patient.appointments');
     Route::get('patient/prescriptions','PatientController@prescriptions')->name('patient.prescriptions');
+    Route::get('patient/invoices','PatientController@invoices')->name('patient.invoices');
 
 });
