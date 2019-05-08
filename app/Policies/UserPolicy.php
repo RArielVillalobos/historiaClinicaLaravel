@@ -53,7 +53,7 @@ class UserPolicy
 
         //si el usuario autenticado tiene el permiso update-user o
         //si el usuario autenticado es igual al modelo que estamos actualizando (al parametro)
-        return $user->has_permission('update-user') || $user->id==$model->id;
+        return ($user->has_permission('update-user') && $user->has_role(config('app.admin_role'))) || $user->id==$model->id;
     }
 
     /**

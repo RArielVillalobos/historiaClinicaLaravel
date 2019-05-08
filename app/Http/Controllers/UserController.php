@@ -101,8 +101,9 @@ class UserController extends Controller
     {
         //
         $user->my_update($request);
+        $view=(isset($_GET['view'])) ? $_GET['view'] : null;
 
-        return redirect()->route('backoffice.user.show',$user);
+        return redirect()->route($user->user_show($view),$user);
 
     }
 

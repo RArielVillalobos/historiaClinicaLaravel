@@ -39,7 +39,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     //las fechas que trabajaremos en nuestro modelo
     //updated_at y created_at no son necesarias
-    protected $dates=['dob'];
+   protected $dates=['dob'];
 
     //Almacenimiento
     public function store($request){
@@ -175,7 +175,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     }
 
-    //vistas
+    //vistas para edit
     public function edit_view($view=null){
         $auth=auth()->user();
 
@@ -190,6 +190,24 @@ class User extends Authenticatable implements MustVerifyEmail
 
         }else{
             return 'theme.frontoffice.pages.user.edit';
+        }
+
+
+    }
+
+    public function user_show($view=null){
+        $auth=auth()->user();
+        //si la variable view no es nula
+        if(!is_null($view) && $view=='frontoffice'){
+            return 'frontoffice.user.profile';
+
+        }else if($auth->has_role(config('app.admin_role'))){
+            //si el usuario autenticado es admin ir a la vista editar usuario del panel
+            return 'backoffice.user.show';
+
+
+        }else{
+            return 'frontoffice.user.profile';
         }
 
 
