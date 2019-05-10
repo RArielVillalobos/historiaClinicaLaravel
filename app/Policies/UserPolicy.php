@@ -107,4 +107,11 @@ class UserPolicy
     public function import(User $user){
         return $user->has_permission('import-user');
     }
+
+    public function update_password(User $user,User $model){
+        //retorna true si el usuario autenticado es igual al modeo que le estamos pasando
+        return $user->id==$model->id;
+
+
+    }
 }

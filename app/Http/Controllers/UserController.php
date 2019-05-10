@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\User\ChangePasswordRequest;
 use App\Http\Requests\User\StoreRequest;
 use App\Http\Requests\User\UpdateRequest;
 use App\Imports\UsersImport;
@@ -186,5 +187,19 @@ class UserController extends Controller
         $user=auth()->user();
 
         return view('theme.frontoffice.pages.user.profile',['user'=>$user]);
+    }
+
+    public function edit_password(){
+        $this->authorize('update_password',auth()->user());
+        return view('theme.frontoffice.pages.user.edit_password');
+    }
+
+    public function change_password(ChangePasswordRequest $request){
+
+        $request->user()->password=bcrypt($request->password);
+        $request->user()->save();
+        alert('!Exito','contraseña actualizada','success');
+        return redirect()->back();
+
     }
 }

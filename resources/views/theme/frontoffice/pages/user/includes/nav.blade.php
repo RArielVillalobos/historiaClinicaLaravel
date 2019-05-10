@@ -11,7 +11,7 @@
                         <a href="{{route('frontoffice.patient.invoices')}}" class="collection-item {{active_class(route('frontoffice.patient.invoices'))}}">Facturacion</a>
                 @endif
                 <a href="{{route('frontoffice.user.edit',[auth()->user(),'view'=>'frontoffice'])}}" class="collection-item {{active_class(route('frontoffice.user.edit',[auth()->user()]))}}">Editar perfil</a>
-                <a href="#!" class="collection-item">Modificar contraseña</a>
+                <a href="{{route('frontoffice.user.edit_password')}}" class="collection-item {{active_class(route('frontoffice.user.edit_password'))}}">Modificar contraseña</a>
         </div>
 
 </div>
