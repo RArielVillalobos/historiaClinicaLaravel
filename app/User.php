@@ -144,7 +144,7 @@ class User extends Authenticatable implements MustVerifyEmail
     public function visible_users(){
         if($this->has_role(config('app.admin_role'))) $users= self::all();
 
-        if($this->has_role(config('app.secretary_role_role'))){
+        if($this->has_role(config('app.secretary_role'))){
             //whereHas nos permite evaluar lo que pertenece a un usuario con relacion a su tabla pivote
             //devuelve todos los usuarios que tengan el rol paciente y rol medico
             $users=self::whereHas('roles',function ($q){
@@ -168,6 +168,20 @@ class User extends Authenticatable implements MustVerifyEmail
         }
 
         return $users;
+    }
+
+    public function visible_roles(){
+        if($this->has_role(config('app.admin_role'))) $roles=Role::all();
+
+        if($this->has_role(config('app.secretary_role'))){
+            //solamente mostraria el rol paciente (el secretario solo puede crear este tipo de usuarios)
+
+            //como necesitamos que lo retorne en forma de collecion usamos el metodo get y no el first
+            $roles=Role::where('slug',config('app.patient_role'))->get();
+
+        }
+
+        return $roles;
     }
 
     //OTRAS OPERACIONES

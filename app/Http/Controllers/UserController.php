@@ -44,7 +44,7 @@ class UserController extends Controller
     {
         //
         $this->authorize('create',User::class);
-        $roles=Role::all();
+        $roles=auth()->user()->visible_roles();
         return view('theme.backoffice.pages.user.create',['roles'=>$roles]);
     }
 
