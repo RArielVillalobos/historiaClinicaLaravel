@@ -29,7 +29,9 @@ class UserController extends Controller
     {
         //
         $this->authorize('index',User::class);
-        $users=User::all();
+
+        //permite ver los usuarios de acuerdo a su rol
+        $users=auth()->user()->visible_users();
         return view('theme.backoffice.pages.user.index',['users'=>$users]);
     }
 

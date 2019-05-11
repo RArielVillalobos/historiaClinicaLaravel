@@ -140,7 +140,34 @@ class User extends Authenticatable implements MustVerifyEmail
 
         return $msj;
 
+    }
+    public function visible_users(){
+        if($this->has_role(config('app.admin_role'))) $users= self::all();
 
+        if($this->has_role(config('app.secretary_role_role'))){
+            //whereHas nos permite evaluar lo que pertenece a un usuario con relacion a su tabla pivote
+            //devuelve todos los usuarios que tengan el rol paciente y rol medico
+            $users=self::whereHas('roles',function ($q){
+                //aca podemos acceder a las propiedades de nuestro rol
+                    $q->whereIn('slug',[
+                        config('app.medico_role'),
+                        config('app.patient_role'),
+
+                    ]);
+
+            })->get();
+        }
+        if($this->has_role(config('app.medico_role'))){
+            $users=self::whereHas('roles',function ($q){
+                //aca podemos acceder a las propiedades de nuestro rol
+                $q->whereIn('slug',[config('app.patient_role'),
+                ]);
+
+            })->get();
+
+        }
+
+        return $users;
     }
 
     //OTRAS OPERACIONES

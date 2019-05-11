@@ -4,6 +4,8 @@ return [
 
     'admin_role'=>env('ADMIN_ROLE','admin'),
     'patient_role'=>env('PATIENT_ROLE','paciente'),
+    'secretary_role'=>env('SECRETARY_ROLE','secretario'),
+    'medico_role'=>env('MEDICO_ROLE','medico'),
     /*
     |--------------------------------------------------------------------------
     | Application Name
