@@ -6954,9 +6954,9 @@ ul.side-nav .collapsible-header.active:after {
 /*----------------------------------------
 Cards
 ------------------------------------------*/
-.card {
+/*.card {
   overflow: hidden;
-}
+}*/
 
 #card-stats .card-content {
   text-align: center;

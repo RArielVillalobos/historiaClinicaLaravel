@@ -26,6 +26,16 @@
                         <form method="post" action="#">
                             @csrf
                             <div class="row">
+                                <div class="input field col s12">
+                                    <select name="especialista_id" class="browser-default">
+                                        <option value="1">Internistas</option>
+                                        <option value="2">Pediatras</option>
+                                        <option value="3">Odontologos</option>
+
+                                    </select>
+                                    <label>Selecciona especialidad</label>
+
+                                </div>
 
                                 <div class="input field col s12">
                                     <select name="medico_id" class="browser-default">
@@ -43,13 +53,13 @@
                             <div class="row">
                                 <div class="input-field col s12 m6">
                                     <i class="material-icons prefix">today</i>
-                                    <input id="datepicker" type="text" name="date" class="datepicker">
-                                    <label for="datepicker">Seleccione una fecha</label>
+                                    <input id="datepicker" type="text" name="date" class="datepicker" placeholder="Seleccione una fecha">
+
                                 </div>
                                 <div class="input-field col s12 m6">
                                     <i class="material-icons prefix">access_time</i>
-                                    <input id="timepicker" type="text" name="time" class="timepicker">
-                                    <label for="timepicker">Seleccione un horario</label>
+                                    <input id="timepicker" type="text" name="time" class="timepicker" placeholder="Seleccione un horario>
+
                                 </div>
 
                             </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 
 class PatientController extends Controller
@@ -12,6 +13,9 @@ class PatientController extends Controller
         return view('theme.frontoffice.pages.user.patient.schedule');
     }
 
+    public function back_schedule(User $user){
+        return view('theme.backoffice.pages.user.patient.schedule',['user'=>$user]);
+    }
     public function appointments(){
         return view('theme.frontoffice.pages.user.patient.appointments');
     }
