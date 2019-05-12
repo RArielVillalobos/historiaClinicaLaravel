@@ -48,12 +48,11 @@ class UserPolicy
      */
     public function update(User $user, User $model)
     {
-        //
-
-
-        //si el usuario autenticado tiene el permiso update-user o
+        //si el usuario autenticado tiene el permiso update-user y si el usuario autenticado tiene el rol admin o secretario
+        //o
         //si el usuario autenticado es igual al modelo que estamos actualizando (al parametro)
-        return ($user->has_permission('update-user') && $user->has_role(config('app.admin_role'))) || $user->id==$model->id;
+        return ($user->has_permission('update-user') && $user->has_any_role([config('app.admin_role'),config('app.secretary_role')]))
+            || $user->id==$model->id;
     }
 
     /**

@@ -19,10 +19,9 @@
             <div class="row">
                 <div class="col s12 m8 offset-m2">
                     <div class="card">
-
                         <div class="card-content">
                             <div class="card-title">Crear Permiso</div>
-                            <form class="col s12" method="post" action="{{route('backoffice.permission.store')}}" >
+                            <form method="post" action="{{route('backoffice.permission.store')}}" >
                                 @csrf
                                 <div class="row">
                                     <div class="input-field col s12">

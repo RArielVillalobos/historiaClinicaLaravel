@@ -26,7 +26,7 @@
                                 <i class="material-icons">keyboard_tab</i>Cerrar Sesión</a>
                         </li>
                     </ul>
-                    <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown-nav">Ariel Villalobos<i class="mdi-navigation-arrow-drop-down right"></i></a>
+                    <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown-nav">{{auth()->user()->name}}<i class="mdi-navigation-arrow-drop-down right"></i></a>
                     <p class="user-roal">Administrator</p>
                 </div>
             </div>

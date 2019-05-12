@@ -23,7 +23,7 @@
 
                         <div class="card-content">
                             <div class="card-title">Asignar permisos</div>
-                            <form class="col s12" method="post" action="{{route('backoffice.user.permission_assignament',$user)}}" >
+                            <form  method="post" action="{{route('backoffice.user.permission_assignament',$user)}}" >
                                 @csrf
                                 {{-- aqui se van a mostrar los permisos--}}
                                 @foreach($roles as $role)

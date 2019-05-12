@@ -220,12 +220,16 @@ class User extends Authenticatable implements MustVerifyEmail
     public function edit_view($view=null){
         $auth=auth()->user();
 
+
+
+
         //si la variable view no es nula
         if(!is_null($view) && $view=='frontoffice'){
-            return 'theme.frontoffice.pages.user.edit';
 
-        }else if($auth->has_role(config('app.admin_role'))){
-            //si el usuario autenticado es admin ir a la vista editar usuario del panel
+            return 'theme.frontoffice.pages.user.edit';
+        //si el usuario autenticado es admin o secretario ir a la vista editar usuario del panel
+        }else if($auth->has_any_role([config('app.admin_role'),config('app.secretary_role')])){
+
             return 'theme.backoffice.pages.user.edit';
 
 
@@ -242,12 +246,15 @@ class User extends Authenticatable implements MustVerifyEmail
         if(!is_null($view) && $view=='frontoffice'){
             return 'frontoffice.user.profile';
 
-        }else if($auth->has_role(config('app.admin_role'))){
-            //si el usuario autenticado es admin ir a la vista editar usuario del panel
+
+        }else if($auth->has_any_role([config('app.admin_role'),config('app.secretary_role')])){
+
+            //si el usuario autenticado es admin o secretario ir a la vista editar usuario del panel
             return 'backoffice.user.show';
 
 
         }else{
+
             return 'frontoffice.user.profile';
         }
 
