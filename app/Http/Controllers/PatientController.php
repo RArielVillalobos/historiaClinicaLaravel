@@ -21,7 +21,7 @@ class PatientController extends Controller
     }
     //para el backoffice
     public function back_appointments(User $user){
-        return 'index de backappointments';
+        return view('theme.backoffice.pages.user.patient.appointment',['user'=>$user]);
 
     }
 
