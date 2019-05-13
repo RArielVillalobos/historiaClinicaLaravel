@@ -48,11 +48,30 @@ class UserPolicy
      */
     public function update(User $user, User $model)
     {
+        if($user->id==$model->id){
+            return true;
+
+        }
+
+        if($user->has_permission('update-user')){
+            //el admin puede editar cualquier user
+            if($user->has_role(config('app.admin_role'))){
+                return true;
+            }
+
+            //si el usuario autenticado es secretarioy el modelo(usuario que queremos editar) tiene el rol de paciente
+            if($user->has_role(config('app.secretary_role')) && $model->has_role(config('app.patient_role'))){
+                return true;
+            }
+
+        }
+        //si no se cumple ninguna de estas condiciones se retorna false
+        return false;
         //si el usuario autenticado tiene el permiso update-user y si el usuario autenticado tiene el rol admin o secretario
         //o
         //si el usuario autenticado es igual al modelo que estamos actualizando (al parametro)
-        return ($user->has_permission('update-user') && $user->has_any_role([config('app.admin_role'),config('app.secretary_role')]))
-            || $user->id==$model->id;
+        /*return ($user->has_permission('update-user') && $user->has_any_role([config('app.admin_role'),config('app.secretary_role')]))
+            || $user->id==$model->id;*/
     }
 
     /**
