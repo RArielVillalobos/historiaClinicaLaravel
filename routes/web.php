@@ -28,6 +28,9 @@ Route::group(['middleware'=>['auth'],'as'=>'backoffice.'],function (){
         Route::get('admin','AdminController@show')->name('admin');
 
         Route::get('/patient/{user}/schedule','PatientController@back_schedule')->name('patient.back_schedule');
+        Route::get('patient/{user}/appointments','PatientController@back_appointments')->name('patient.back_appointments');
+        Route::get('patient/{user}/invoices','PatientController@back_invoices')->name('patient.back_invoices');
+
         //Route::get('role','RoleController@index')->name('role.index');
         //en vez de crear cada ruta para el crud lo podemos hacer asi, primer parametro nombre de la entidad
         Route::resource('user','UserController');
