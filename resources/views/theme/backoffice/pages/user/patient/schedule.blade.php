@@ -34,30 +34,37 @@
                             <span class="card-title">@yield('title')</span>
                             <form method="post" action="#">
                                 @csrf
-                                <div class="row">
-                                    <div class="input field col s12">
-                                        <select name="especialista_id" class="browser-default">
-                                            <option value="1">Internistas</option>
-                                            <option value="2">Pediatras</option>
-                                            <option value="3">Odontologos</option>
+                                @if(auth()->user()->has_role(config('app.medico_role')))
+                                    <input type="hidden" name="especialista_id" value="">
+                                    <input type="hidden" name="doctor_id" value="{{auth()->id()}}" >
 
-                                        </select>
-                                        <label>Selecciona especialidad</label>
+                                @else
+                                    <div class="row">
+                                        <div class="input field col s12">
+                                            <select name="especialista_id" class="browser-default">
+                                                <option value="1">Internistas</option>
+                                                <option value="2">Pediatras</option>
+                                                <option value="3">Odontologos</option>
+
+                                            </select>
+                                            <label>Selecciona especialidad</label>
+
+                                        </div>
+
+                                        <div class="input field col s12">
+                                            <select name="medico_id" class="browser-default">
+                                                <option value="1">Raul</option>
+                                                <option value="2">Melanie</option>
+                                                <option value="3">Luciana</option>
+
+                                            </select>
+                                            <label>Selecciona un especialista</label>
+
+                                        </div>
 
                                     </div>
 
-                                    <div class="input field col s12">
-                                        <select name="medico_id" class="browser-default">
-                                            <option value="1">Raul</option>
-                                            <option value="2">Melanie</option>
-                                            <option value="3">Luciana</option>
-
-                                        </select>
-                                        <label>Selecciona un especialista</label>
-
-                                    </div>
-
-                                </div>
+                                @endif
 
                                 <div class="row">
                                     <div class="input-field col s12 m6">

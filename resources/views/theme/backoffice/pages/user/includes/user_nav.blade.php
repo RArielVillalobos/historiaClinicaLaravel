@@ -2,7 +2,7 @@
 
     {{-- <a href="#!" class="collection-item">Alvin</a> --}}
     <a href="{{route('backoffice.user.show',$user)}}" class="collection-item {{active_class(route('backoffice.user.show',$user))}}">{{$user->name}}</a>
-    @if(auth()->user()->has_role(config('app.admin_role')) || auth()->user()->has_role(config('app.secretary_role')))
+    @if(auth()->user()->has_any_role([config('app.admin_role'),config('app.secretary_role'),config('app.medico_role')]))
         {{-- si el usuario al que vamos a editar tiene el rol paciente le podemos asignar una cita --}}
        @if($user->has_role(config('app.patient_role')))
             <a href="{{route('backoffice.patient.back_schedule',$user)}}" class="collection-item {{active_class(route('backoffice.patient.back_schedule',$user))}}">Agendar Cita</a>
