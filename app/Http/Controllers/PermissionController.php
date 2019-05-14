@@ -22,7 +22,7 @@ class PermissionController extends Controller
     {
         //
         $this->authorize('index',Permission::class);
-        $permissions=Permission::all();
+        $permissions=Permission::all()->load('role');
         return view('theme.backoffice.pages.permission.index',['permissions'=>$permissions]);
     }
 

@@ -9,7 +9,7 @@ class AdminController extends Controller
     //todos los metodos van a estar protegidos por este middleware(administrador)
     public function __construct()
     {
-        $this->middleware('role:'.config('app.admin_role').'-'.config('app.secretary_role'));
+        $this->middleware('role:'.config('app.admin_role').'-'.config('app.secretary_role').'-'.config('app.medico_role'));
     }
 
     public function show(){

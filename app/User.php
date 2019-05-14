@@ -173,7 +173,7 @@ class User extends Authenticatable implements MustVerifyEmail
     public function visible_roles(){
         if($this->has_role(config('app.admin_role'))) $roles=Role::all();
 
-        if($this->has_role(config('app.secretary_role'))){
+        if($this->has_any_role([config('app.secretary_role'),config('app.medico_role')])){
             //solamente mostraria el rol paciente (el secretario solo puede crear este tipo de usuarios)
 
             //como necesitamos que lo retorne en forma de collecion usamos el metodo get y no el first
