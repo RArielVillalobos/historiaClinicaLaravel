@@ -55,6 +55,8 @@ class SpecialityController extends Controller
     public function show(Speciality $speciality)
     {
         //
+        $users=$speciality->users;
+        return view('theme.backoffice.pages.speciality.show',['speciality'=>$speciality,'users'=>$users]);
     }
 
     /**
