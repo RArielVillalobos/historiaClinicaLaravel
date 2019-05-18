@@ -34,15 +34,20 @@ Route::group(['middleware'=>['auth'],'as'=>'backoffice.'],function (){
         //Route::get('role','RoleController@index')->name('role.index');
         //en vez de crear cada ruta para el crud lo podemos hacer asi, primer parametro nombre de la entidad
         Route::resource('user','UserController');
-        Route::get('user/{user}/assign_role','UserController@assign_role')->name('user.assign_role');
-        Route::post('user/{user}/role_assignament','UserController@role_assignament')->name('user.role_assignament');
-        Route::get('user/{user}/assign_permission','UserController@assign_permission')->name('user.assign_permission');
-        Route::post('user/{user}/permission_assignament','UserController@permission_assignament')->name('user.permission_assignament');
+
+
         Route::get('user/import','UserController@import')->name('user.import');
         Route::post('user/make_import','UserController@make_import')->name('user.make_import');
 
         Route::resource('role','RoleController');
+        Route::get('user/{user}/assign_role','UserController@assign_role')->name('user.assign_role');
+        Route::post('user/{user}/role_assignament','UserController@role_assignament')->name('user.role_assignament');
+
         Route::resource('permission','PermissionController');
+        Route::get('user/{user}/assign_permission','UserController@assign_permission')->name('user.assign_permission');
+        Route::post('user/{user}/permission_assignament','UserController@permission_assignament')->name('user.permission_assignament');
+
+        Route::resource('speciality','SpecialityController');
 
 });
 

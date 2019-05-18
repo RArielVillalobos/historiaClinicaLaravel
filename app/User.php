@@ -80,6 +80,11 @@ class User extends Authenticatable implements MustVerifyEmail
     return $this->belongsToMany(Role::class)->withTimestamps();
     }
 
+    public function specialities(){
+        return $this->belongsToMany(Speciality::class)->withTimestamps();
+
+    }
+
 
     //VALIDACIONES
     public function is_admin(){
