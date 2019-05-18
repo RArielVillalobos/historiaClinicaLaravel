@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Speciality\StoreRequest;
+use App\Http\Requests\Speciality\UpdateRequest;
 use App\Speciality;
 use Illuminate\Http\Request;
 
@@ -27,6 +29,7 @@ class SpecialityController extends Controller
     public function create()
     {
         //
+        return view('theme.backoffice.pages.speciality.create');
     }
 
     /**
@@ -35,9 +38,10 @@ class SpecialityController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
         //
+        dd($request->all());
     }
 
     /**
@@ -69,7 +73,7 @@ class SpecialityController extends Controller
      * @param  \App\Speciality  $speciality
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Speciality $speciality)
+    public function update(UpdateRequest $request, Speciality $speciality)
     {
         //
     }
