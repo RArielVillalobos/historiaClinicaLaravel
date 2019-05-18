@@ -15,6 +15,8 @@ class SpecialityController extends Controller
     public function index()
     {
         //
+        $specialities=Speciality::all();
+        return view('theme.backoffice.pages.speciality.index',['specialities'=>$specialities]);
     }
 
     /**
