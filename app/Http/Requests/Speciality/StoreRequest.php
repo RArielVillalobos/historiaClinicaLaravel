@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Speciality;
 
+use App\Speciality;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreRequest extends FormRequest
@@ -13,7 +14,8 @@ class StoreRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+
+        return $this->user()->can('create',Speciality::class);
     }
 
     /**
@@ -25,6 +27,17 @@ class StoreRequest extends FormRequest
     {
         return [
             //
+            'name'=>'required|unique:specialities|max:255',
+
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'name.required'=>'el nombre es requerido',
+            'name.unique'=>'el nombre ya esta en uso',
+
         ];
     }
 }

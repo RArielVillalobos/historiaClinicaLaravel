@@ -8,9 +8,17 @@ class Speciality extends Model
 {
     //
     protected $fillable=['name'];
-    
+
+    //RELACIONES
     public function users(){
         return $this->belongsToMany(User::class)->withTimestamps();
+
+
+    }
+
+    //ALMACENIMIENTO
+    public function store($request){
+        return self::create($request->input());
 
 
     }

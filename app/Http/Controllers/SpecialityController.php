@@ -38,10 +38,12 @@ class SpecialityController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreRequest $request)
+    public function store(StoreRequest $request,Speciality $speciality)
     {
         //
-        dd($request->all());
+        $speciality=$speciality->store($request);
+        return redirect()->route('backoffice.speciality.show',$speciality);
+
     }
 
     /**
