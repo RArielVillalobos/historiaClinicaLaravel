@@ -10,6 +10,11 @@
     <li><a href="{{route('backoffice.speciality.index')}}">Especialidades médicas</a></li>
     <li><a class="active">{{$speciality->name}}</a></li>
 @endsection
+@section('dropdown_settings')
+    {{-- <li><a class="grey-text text-darken-2"></a></li> --}}
+    <li><a href="{{route('backoffice.speciality.edit',$speciality)}}" class="grey-text text-darken-2">Editar especialidad</a></li>
+
+@endsection
 
 
 @section('content')

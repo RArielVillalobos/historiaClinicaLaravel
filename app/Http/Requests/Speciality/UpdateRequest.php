@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Speciality;
 
+
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateRequest extends FormRequest
@@ -13,7 +14,9 @@ class UpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+
+        $speciality=$this->route('speciality');
+        return $this->user()->can('update',$speciality);
     }
 
     /**
@@ -25,6 +28,17 @@ class UpdateRequest extends FormRequest
     {
         return [
             //
+            'name'=>'required|unique:specialities,name,'.$this->route('speciality')->id.'|max:255',
+
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'name.required'=>'el nombre es requerido',
+            'name.unique'=>'el nombre ya esta en uso',
+
         ];
     }
 }

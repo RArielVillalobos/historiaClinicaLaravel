@@ -68,6 +68,7 @@ class SpecialityController extends Controller
     public function edit(Speciality $speciality)
     {
         //
+        return view('theme.backoffice.pages.speciality.edit',['speciality'=>$speciality]);
     }
 
     /**
@@ -80,6 +81,9 @@ class SpecialityController extends Controller
     public function update(UpdateRequest $request, Speciality $speciality)
     {
         //
+        $speciality->my_update($request);
+        return redirect()->route('backoffice.speciality.show',$speciality);
+
     }
 
     /**

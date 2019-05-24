@@ -44,6 +44,7 @@ class SpecialityPolicy
     public function update(User $user, Speciality $speciality)
     {
         //
+        return $user->has_role(config('app.admin_role'));
     }
 
     /**

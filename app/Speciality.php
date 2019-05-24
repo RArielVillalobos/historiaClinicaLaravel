@@ -23,6 +23,11 @@ class Speciality extends Model
 
     }
 
+    public function my_update($request){
+        return self::update($request->input());
+
+    }
+
 
 
 }
