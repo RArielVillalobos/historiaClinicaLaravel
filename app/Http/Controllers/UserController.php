@@ -6,6 +6,7 @@ use App\Http\Requests\User\ChangePasswordRequest;
 use App\Http\Requests\User\StoreRequest;
 use App\Http\Requests\User\UpdateRequest;
 use App\Imports\UsersImport;
+use App\Speciality;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Role;
 use App\User;
@@ -164,6 +165,18 @@ class UserController extends Controller
         alert('Exito','Permisos asignados','success');
 
         return redirect()->route('backoffice.user.show',$user);
+
+
+    }
+
+    //mostrar formulario para asignar especialidades
+    public function assign_speciality(User $user){
+
+        $specialities=Speciality::all();
+        return view('theme.backoffice.pages.user.assign_speciality',['specialities'=>$specialities,'user'=>$user]);
+
+    }
+    public function speciality_assignament(Request $request){
 
 
     }

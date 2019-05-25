@@ -48,6 +48,10 @@ Route::group(['middleware'=>['auth'],'as'=>'backoffice.'],function (){
         Route::post('user/{user}/permission_assignament','UserController@permission_assignament')->name('user.permission_assignament');
 
         Route::resource('speciality','SpecialityController');
+        Route::get('user/{user}/assign_speciality','UserController@assign_speciality')->name('user.assign_speciality');
+    Route::post('user/{user}/speciality_assignament','UserController@speciality_assignament')->name('user.speciality_assignament');
+
+
 
 });
 

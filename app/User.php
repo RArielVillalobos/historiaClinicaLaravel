@@ -131,6 +131,18 @@ class User extends Authenticatable implements MustVerifyEmail
         }
         return $encontrado;
     }
+
+    public function has_speciality($id){
+        $encontrado=false;
+        foreach ($this->specialities as $speciality){
+            if($speciality->id==$id){
+                $encontrado=true;
+            }
+
+        }
+        return $encontrado;
+
+    }
     //RECUPERACION DE INFORMACION
     public function age(){
         if($this->dob!=null){
