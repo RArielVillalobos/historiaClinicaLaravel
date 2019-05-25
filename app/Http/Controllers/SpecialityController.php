@@ -95,5 +95,8 @@ class SpecialityController extends Controller
     public function destroy(Speciality $speciality)
     {
         //
+        $speciality->delete();
+        return redirect()->route('backoffice.speciality.index');
+
     }
 }

@@ -147,9 +147,11 @@ class User extends Authenticatable implements MustVerifyEmail
 
     }
     public function visible_users(){
-        if($this->has_role(config('app.admin_role'))) $users= self::all();
+        if($this->has_role(config('app.admin_role'))){
+            $users= self::all();
+        }
 
-        if($this->has_role(config('app.secretary_role'))){
+        elseif($this->has_role(config('app.secretary_role'))){
             //whereHas nos permite evaluar lo que pertenece a un usuario con relacion a su tabla pivote
             //devuelve todos los usuarios que tengan el rol paciente y rol medico
             $users=self::whereHas('roles',function ($q){
@@ -162,7 +164,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
             })->get();
         }
-        if($this->has_role(config('app.medico_role'))){
+        elseif($this->has_role(config('app.medico_role'))){
             $users=self::whereHas('roles',function ($q){
                 //aca podemos acceder a las propiedades de nuestro rol
                 $q->whereIn('slug',[config('app.patient_role'),
@@ -187,6 +189,16 @@ class User extends Authenticatable implements MustVerifyEmail
         }
 
         return $roles;
+    }
+
+    public function list_roles(){
+         //que solamente retorne el nombre y lo convierta en un array
+        $roles=$this->roles->pluck('name')->toArray();
+        //el primer parametro es el separador, y el segundo para es el arreglo a seprar
+        // es lo opuesto al explode que retorna una arreglo
+        $string=implode(', ',$roles);
+        return $string;
+
     }
 
     //OTRAS OPERACIONES
