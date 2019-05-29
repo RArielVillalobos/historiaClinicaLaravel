@@ -213,6 +213,12 @@ class User extends Authenticatable implements MustVerifyEmail
 
     }
 
+    public function list_specialities(){
+        $specialities=$this->specialities->pluck('name')->toArray();
+        $string=implode(',',$specialities);
+        return $string;
+    }
+
     //OTRAS OPERACIONES
     public function verify_permission_integrity(array $roles){
         //los permisos que tiene el usuario

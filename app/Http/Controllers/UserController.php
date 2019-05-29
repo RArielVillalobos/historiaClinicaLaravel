@@ -176,7 +176,12 @@ class UserController extends Controller
         return view('theme.backoffice.pages.user.assign_speciality',['specialities'=>$specialities,'user'=>$user]);
 
     }
-    public function speciality_assignament(Request $request){
+    public function speciality_assignament(Request $request,User $user){
+        //sincronizar todos los id que vienen en el request
+        $user->specialities()->sync($request->specialities);
+        alert('Exito','especialidades agregadas correctamente','success');
+        return redirect(route('backoffice.user.show',$user));
+
 
 
     }

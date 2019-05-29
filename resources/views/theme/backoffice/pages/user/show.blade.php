@@ -28,6 +28,11 @@
                         <div class="card-content">
                             <span class="card-title">{{$user->name}}</span>
                             <p><strong>Edad: {{$user->age()}}</strong></p>
+                            <p><strong>Roles: {{$user->list_roles()}}</strong></p>
+                            @if($user->has_role(config('app.medico_role')))
+                                <p><strong>Especialidades: {{$user->list_specialities()}}</strong></p>
+
+                            @endif
 
 
                         </div>

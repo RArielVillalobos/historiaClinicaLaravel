@@ -9,7 +9,7 @@
     {{-- <li><a></a></li> --}}
     <li><a href="{{route('backoffice.role.index')}}">Usuarios del sistema</a></li>
     <li><a href="{{route('backoffice.user.show',$user)}}">{{$user->name}}</a></li>
-    <li><a href="active">Asignar especialidad</a></li>
+    <li><a href="#">Asignar especialidad</a></li>
 @endsection
 
 @section('content')
