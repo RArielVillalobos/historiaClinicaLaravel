@@ -66,4 +66,9 @@ Route::group(['as'=>'frontoffice.'],function (){
     Route::get('patient/prescriptions','PatientController@prescriptions')->name('patient.prescriptions');
     Route::get('patient/invoices','PatientController@invoices')->name('patient.invoices');
 
+
+});
+
+Route::group(['middleware'=>['auth'],'as'=>'ajax.'],function(){
+    Route::get('user_speciality','AjaxController@user_speciality')->name('user_speciality');
 });

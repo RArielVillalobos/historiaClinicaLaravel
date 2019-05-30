@@ -118,6 +118,25 @@
 
 
     $('select').formSelect();
+    var speciality=$('#speciality');
+    var doctor=$('#doctor');
+
+    speciality.change(function (e) {
+        $.ajax({
+            url:"{{route('ajax.user_speciality')}}",
+            method:'get',
+            data:{
+                speciality:speciality.val(),
+                
+            },
+            success:function (data) {
+                console.log(data);
+                
+            }
+
+        });
+
+    })
 
 </script>
 
