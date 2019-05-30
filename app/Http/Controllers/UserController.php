@@ -159,7 +159,12 @@ class UserController extends Controller
 
     }
 
-    public function permission_assignament(Request $request,User $user){
+    /**
+     * @param Request $request
+     * @param User $user
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function permission_assignament(Request $request, User $user){
 
         $user->permissions()->sync($request->permissions);
         alert('Exito','Permisos asignados','success');
@@ -170,13 +175,24 @@ class UserController extends Controller
     }
 
     //mostrar formulario para asignar especialidades
+
+    /**
+     * @param User $user
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function assign_speciality(User $user){
 
         $specialities=Speciality::all();
         return view('theme.backoffice.pages.user.assign_speciality',['specialities'=>$specialities,'user'=>$user]);
 
     }
-    public function speciality_assignament(Request $request,User $user){
+
+    /**
+     * @param Request $request
+     * @param User $user
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function speciality_assignament(Request $request, User $user){
         //sincronizar todos los id que vienen en el request
         $user->specialities()->sync($request->specialities);
         alert('Exito','especialidades agregadas correctamente','success');

@@ -27,10 +27,12 @@
                             @csrf
                             <div class="row">
                                 <div class="input field col s12">
-                                    <select name="especialista_id" class="browser-default">
-                                        <option value="1">Internistas</option>
-                                        <option value="2">Pediatras</option>
-                                        <option value="3">Odontologos</option>
+                                    <select id="speciality" name="especialista_id" class="browser-default">
+                                        @foreach($specialities as $speciality)
+                                            <option disableed selected>Selecciona una especiliadad</option>
+                                            <option value="{{$speciality->id}}">{{$speciality->name}}</option>
+
+                                        @endforeach
 
                                     </select>
                                     <label>Selecciona especialidad</label>
@@ -38,10 +40,8 @@
                                 </div>
 
                                 <div class="input field col s12">
-                                    <select name="medico_id" class="browser-default">
-                                        <option value="1">Raul</option>
-                                        <option value="2">Melanie</option>
-                                        <option value="3">Luciana</option>
+                                    <select id="doctor" name="medico_id" class="browser-default">
+                                        <option disabled selected>Primero selecciona una especialidad</option>
 
                                     </select>
                                     <label>Selecciona un especialista</label>
