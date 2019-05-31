@@ -28,8 +28,9 @@
                             <div class="row">
                                 <div class="input field col s12">
                                     <select id="speciality" name="especialista_id" class="browser-default">
+                                        <option disabled selected>Selecciona una especiliadad</option>
                                         @foreach($specialities as $speciality)
-                                            <option disableed selected>Selecciona una especiliadad</option>
+
                                             <option value="{{$speciality->id}}">{{$speciality->name}}</option>
 
                                         @endforeach
@@ -58,7 +59,7 @@
                                 </div>
                                 <div class="input-field col s12 m6">
                                     <i class="material-icons prefix">access_time</i>
-                                    <input id="timepicker" type="text" name="time" class="timepicker" placeholder="Seleccione un horario>
+                                    <input id="timepicker" type="text" name="time" class="timepicker" placeholder="Seleccione un horario">
 
                                 </div>
 
@@ -122,6 +123,7 @@
     var doctor=$('#doctor');
 
     speciality.change(function (e) {
+
         $.ajax({
             url:"{{route('ajax.user_speciality')}}",
             method:'get',
@@ -130,8 +132,19 @@
                 
             },
             success:function (data) {
-                console.log(data);
-                
+                doctor.empty();
+
+                //que se le añada un elemento hijo
+
+                doctor.append(`<option  selected disabled>Selecciona un medico</option>`);
+                //por cada elemento data
+                $.each(data,function (index,element) {
+                    doctor.append(`<option value="${element.id}" selected>${element.name}</option>`);
+
+                    
+                });
+                //que el select se inicialice nuevamente
+                doctor.formSelect();
             }
 
         });
